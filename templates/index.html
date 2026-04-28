@@ -9,7 +9,8 @@
         table { width: 100%; border-collapse: collapse; color: #00ff00; margin-top: 10px; }
         th, td { border: 1px solid #00ff00; padding: 10px; text-align: left; }
         th { background-color: #222; }
-        input, select, button { padding: 8px; margin: 5px 0; }
+        input, select, button { padding: 8px; margin: 5px 0; background: #333; color: #00ff00; border: 1px solid #00ff00; }
+        button { cursor: pointer; background: #00ff00; color: #000; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -19,30 +20,35 @@
     <div style="display: flex; gap: 20px;">
         <div class="card" style="flex: 1; border-color: red;">🚨 Críticos: {{ criticos }}</div>
         <div class="card" style="flex: 1; border-color: orange;">⚠️ Altos: {{ altos }}</div>
-        <div class="card" style="flex: 1;">📊 Total: {{ total }}</div>
+        <div class="card" style="flex: 1;">📊 Total: {{ total }} | <a href="/analytics" style="color: #00ff00;">Ver Analytics</a></div>
     </div>
 
     <div class="card" style="border-color: #f1c40f;">
-        <h4 style="color: #f1c40f;">Registrar Nova Ocorrência</h4>
+        <h4 style="color: #f1c40f;">Registrar Nova Ocorrência (Campo Inteligente)</h4>
         <form action="/add" method="POST">
-            <input type="text" name="tipo" placeholder="Tipo de Ameaça" required>
+            
+            <input list="ameacas-sugeridas" name="tipo" placeholder="Tipo de Ameaça (ex: SQL Injection)" required style="width: 250px;">
+            <datalist id="ameacas-sugeridas">
+                {% for tipo, risco in sugestoes.items() %}
+                    <option value="{{ tipo }}">Sugestão de Risco: {{ risco }}</option>
+                {% endfor %}
+            </datalist>
+
             <select name="risco">
                 <option value="Baixo">Baixo</option>
                 <option value="Médio">Médio</option>
                 <option value="Alto">Alto</option>
                 <option value="Crítico">Crítico</option>
             </select>
+            
             <input type="text" name="status" placeholder="Status (ex: Isolado)" required>
             <button type="submit">Enviar Alerta</button>
         </form>
     </div>
 
     <div class="card">
-        <h3>Status do Sistema: <span style="color: white;">Operacional</span></h3>
-        <p>Bem-vindo, Pesquisador Paulo Henrique.</p>
+        <h3>Logs de Segurança | Pesquisador: Paulo Henrique</h3>
         <hr>
-        <h4>Alertas Recentes (Ordenados por Prioridade):</h4>
-        
         <table>
             <thead>
                 <tr>
@@ -60,11 +66,11 @@
                     <td>{{ item.get('data', 'N/A') }}</td>
                     <td>{{ item.tipo }}</td>
                     <td style="font-weight: bold; color: 
-                      {% if item.risco == 'Crítico' %} red 
-                      {% elif item.risco == 'Alto' %} orange 
-                      {% elif item.risco == 'Médio' %} yellow 
-                      {% else %} #00ff00 {% endif %};">
-                      {{ item.risco }}
+                        {% if item.risco == 'Crítico' %} red 
+                        {% elif item.risco == 'Alto' %} orange 
+                        {% elif item.risco == 'Médio' %} yellow 
+                        {% else %} #00ff00 {% endif %};">
+                        {{ item.risco }}
                     </td>
                     <td>{{ item.status }}</td>
                 </tr>
@@ -72,6 +78,25 @@
             </tbody>
         </table>
     </div>
+    <script>
+    // Transforma o dicionário do Python em um objeto JavaScript
+    const sugestoesIA = {{ sugestoes|tojson }};
+
+    const inputTipo = document.querySelector('input[name="tipo"]');
+    const selectRisco = document.querySelector('select[name="risco"]');
+
+    // Escuta quando você digita ou seleciona algo
+    inputTipo.addEventListener('input', function() {
+        const valor = this.value;
+        if (sugestoesIA[valor]) {
+            // Se a IA tiver uma sugestão para esse tipo, ela muda o select!
+            selectRisco.value = sugestoesIA[valor];
+            selectRisco.style.boxShadow = "0 0 10px #f1c40f"; // Efeito visual de sugestão
+        } else {
+            selectRisco.style.boxShadow = "none";
+        }
+    });
+</script>
 
 </body>
 </html>

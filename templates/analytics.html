@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Analytics - XEQUE-MATE</title>
+    <style>
+        body { font-family: sans-serif; background: #1a1a1a; color: #00ff00; padding: 20px; }
+        .bar { background: #00ff00; color: #000; padding: 5px; margin: 5px 0; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>📊 Análise de Frequência de Ameaças</h1>
+    <a href="/" style="color: white;">Voltar ao Dashboard</a>
+    <hr>
+    {% for tipo, qtd in stats.items() %}
+        <p>{{ tipo }} ({{ qtd }})</p>
+        <div class="bar" style="width: {{ qtd * 10 }}px;">{{ qtd }}</div>
+    {% endfor %}
+    <hr>
+<h3>🧠 Inteligência Preditiva (Sugestão de Risco)</h3>
+<p>Baseado no histórico, a IA sugere classificar novos ataques assim:</p>
+<ul>
+    {% for tipo, risco_sugerido in previsoes.items() %}
+        <li>Se for <strong>{{ tipo }}</strong>, classificar como: <span style="color: yellow;">{{ risco_sugerido }}</span></li>
+    {% endfor %}
+</ul>
+</body>
+</html>
