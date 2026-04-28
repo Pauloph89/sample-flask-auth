@@ -34,5 +34,18 @@
         "tipo": "Phishing",
         "risco": "Médio",
         "status": "Monitorando"
+    },
+    {
+        "id": 7,
+        "tipo": "Phishing",
+        "risco": "Crítico",
+        "status": "Bloqueado"
+    },
+    {
+        "id": 8,
+        "data": "28/04/2026 01:01",
+        "tipo": "Phishing",
+        "risco": "Alto",
+        "status": "Bloqueado"
     }
 ]

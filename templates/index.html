@@ -1,40 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard XEQUE-MATE</title>
-  <style>
-    body { font-family: sans-serif; background: #1a1a1a; color: #00ff00; padding: 20px; }
-    .card { border: 1px solid #00ff00; padding: 15px; border-radius: 5px; }
-  </style>
+    <meta charset="UTF-8">
+    <title>Dashboard XEQUE-MATE</title>
+    <style>
+        body { font-family: sans-serif; background: #1a1a1a; color: #00ff00; padding: 20px; }
+        .card { border: 1px solid #00ff00; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; color: #00ff00; margin-top: 10px; }
+        th, td { border: 1px solid #00ff00; padding: 10px; text-align: left; }
+        th { background-color: #222; }
+        input, select, button { padding: 8px; margin: 5px 0; }
+    </style>
 </head>
 <body>
-    <h1> Monitoramento XEQUE-MATE</h1>
+
+    <h1>🛡️ Monitoramento XEQUE-MATE</h1>
+
+    <div style="display: flex; gap: 20px;">
+        <div class="card" style="flex: 1; border-color: red;">🚨 Críticos: {{ criticos }}</div>
+        <div class="card" style="flex: 1; border-color: orange;">⚠️ Altos: {{ altos }}</div>
+        <div class="card" style="flex: 1;">📊 Total: {{ total }}</div>
+    </div>
+
+    <div class="card" style="border-color: #f1c40f;">
+        <h4 style="color: #f1c40f;">Registrar Nova Ocorrência</h4>
+        <form action="/add" method="POST">
+            <input type="text" name="tipo" placeholder="Tipo de Ameaça" required>
+            <select name="risco">
+                <option value="Baixo">Baixo</option>
+                <option value="Médio">Médio</option>
+                <option value="Alto">Alto</option>
+                <option value="Crítico">Crítico</option>
+            </select>
+            <input type="text" name="status" placeholder="Status (ex: Isolado)" required>
+            <button type="submit">Enviar Alerta</button>
+        </form>
+    </div>
+
     <div class="card">
         <h3>Status do Sistema: <span style="color: white;">Operacional</span></h3>
         <p>Bem-vindo, Pesquisador Paulo Henrique.</p>
-        
-        <div class="card" style="margin-top: 20px; border-color: #f1c40f;">
-    <h4 style="color: #f1c40f;">Registrar Nova Ocorrência</h4>
-    <form action="/add" method="POST">
-        <input type="text" name="tipo" placeholder="Tipo de Ameaça" required>
-        <select name="risco">
-            <option value="Baixo">Baixo</option>
-            <option value="Médio">Médio</option>
-            <option value="Alto">Alto</option>
-            <option value="Crítico">Crítico</option>
-        </select>
-        <input type="text" name="status" placeholder="Status (ex: Isolado)" required>
-        <button type="submit">Enviar Alerta</button>
-    </form>
-</div>
-
         <hr>
-        <h4>Alertas Recentes:</h4>
-        <table border="1" style="width: 100%; border-collapse: collapse; color: #00ff00;">
+        <h4>Alertas Recentes (Ordenados por Prioridade):</h4>
+        
+        <table>
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Data/Hora</th>
                     <th>Tipo de Ameaça</th>
                     <th>Risco</th>
                     <th>Status</th>
@@ -44,13 +57,21 @@
                 {% for item in lista_ameacas %}
                 <tr>
                     <td>{{ item.id }}</td>
+                    <td>{{ item.get('data', 'N/A') }}</td>
                     <td>{{ item.tipo }}</td>
-                    <td>{{ item.risco }}</td>
+                    <td style="font-weight: bold; color: 
+                      {% if item.risco == 'Crítico' %} red 
+                      {% elif item.risco == 'Alto' %} orange 
+                      {% elif item.risco == 'Médio' %} yellow 
+                      {% else %} #00ff00 {% endif %};">
+                      {{ item.risco }}
+                    </td>
                     <td>{{ item.status }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+
 </body>
 </html>
