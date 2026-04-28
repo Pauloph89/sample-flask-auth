@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard XEQUE-MATE</title>
+  <style>
+    body { font-family: sans-serif; background: #1a1a1a; color: #00ff00; padding: 20px; }
+    .card { border: 1px solid #00ff00; padding: 15px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+    <h1> Monitoramento XEQUE-MATE</h1>
+    <div class="card">
+        <h3>Status do Sistema: <span style="color: white;">Operacional</span></h3>
+        <p>Bem-vindo, Pesquisador Paulo Henrique.</p>
+        
+        <hr>
+        <h4>Alertas Recentes:</h4>
+        <table border="1" style="width: 100%; border-collapse: collapse; color: #00ff00;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo de Ameaça</th>
+                    <th>Risco</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in lista_ameacas %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.tipo }}</td>
+                    <td>{{ item.risco }}</td>
+                    <td>{{ item.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
