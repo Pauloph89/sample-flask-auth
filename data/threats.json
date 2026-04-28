@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "tipo": "Brute Force",
+        "risco": "Alto",
+        "status": "Bloqueado"
+    },
+    {
+        "id": 2,
+        "tipo": "Port Scan",
+        "risco": "Médio",
+        "status": "Monitorando"
+    },
+    {
+        "id": 3,
+        "tipo": "Malware Inbound",
+        "risco": "Crítico",
+        "status": "Isolado"
+    },
+    {
+        "id": 4,
+        "tipo": "SQL Injection",
+        "risco": "Crítico",
+        "status": "Bloqueado"
+    },
+    {
+        "id": 5,
+        "tipo": "DDoS Attack",
+        "risco": "Alto",
+        "status": "Mitigado"
+    },
+    {
+        "id": 6,
+        "tipo": "Phishing",
+        "risco": "Médio",
+        "status": "Monitorando"
+    }
+]

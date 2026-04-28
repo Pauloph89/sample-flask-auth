@@ -14,6 +14,21 @@
         <h3>Status do Sistema: <span style="color: white;">Operacional</span></h3>
         <p>Bem-vindo, Pesquisador Paulo Henrique.</p>
         
+        <div class="card" style="margin-top: 20px; border-color: #f1c40f;">
+    <h4 style="color: #f1c40f;">Registrar Nova Ocorrência</h4>
+    <form action="/add" method="POST">
+        <input type="text" name="tipo" placeholder="Tipo de Ameaça" required>
+        <select name="risco">
+            <option value="Baixo">Baixo</option>
+            <option value="Médio">Médio</option>
+            <option value="Alto">Alto</option>
+            <option value="Crítico">Crítico</option>
+        </select>
+        <input type="text" name="status" placeholder="Status (ex: Isolado)" required>
+        <button type="submit">Enviar Alerta</button>
+    </form>
+</div>
+
         <hr>
         <h4>Alertas Recentes:</h4>
         <table border="1" style="width: 100%; border-collapse: collapse; color: #00ff00;">
