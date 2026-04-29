@@ -6,6 +6,17 @@ app = Flask(__name__)
 
 DATA_FILE = "data/threats.json"
 
+# Tabela de Tradução Técnica (Anotação Semântica)
+# Mapeia o Tipo de Ameaça para metadados do MITRE ATT&CK
+CONHECIMENTO_MITRE = {
+    "Brute Force": {"id_tecnica": "T1110", "tatica": "Acesso Inicial"},
+    "SQL Injection": {"id_tecnica": "T1190", "tatica": "Acesso Inicial"},
+    "Phishing": {"id_tecnica": "T1566", "tatica": "Acesso Inicial"},
+    "DDoS Attack": {"id_tecnica": "T1498", "tatica": "Interrupção de Disponibilidade"},
+    "Port Scan": {"id_tecnica": "T1595", "tatica": "Reconhecimento"},
+    "Malware Inbound": {"id_tecnica": "T1588", "tatica": "Obtenção de Recursos"}
+}
+
 @app.route("/")
 def home():
     try:
@@ -73,12 +84,22 @@ def add_threat():
     except:
         ameacas = []
 
+    # PEGA O TIPO QUE VOCÊ DIGITOU NO FORMULÁRIO
+    tipo_selecionado = request.form.get("tipo")
+    
+    # CONSULTA O DICIONÁRIO MITRE (Anotação Semântica)
+    info_mitre = CONHECIMENTO_MITRE.get(tipo_selecionado, {"id_tecnica": "N/A", "tatica": "N/A"})
+
+    # MONTA A NOVA AMEAÇA COM OS METADADOS TÉCNICOS
     nova_ameaca = {
         "id": len(ameacas) + 1,
         "data": datetime.now().strftime("%d/%m/%Y %H:%M"),
-        "tipo": request.form.get("tipo"),
+        "tipo": tipo_selecionado,
         "risco": request.form.get("risco"),
-        "status": request.form.get("status")
+        "status": request.form.get("status"),
+        # Estes campos abaixo são o que o seu contrato de bolsa exige!
+        "mitre_id": info_mitre["id_tecnica"],
+        "mitre_tatica": info_mitre["tatica"]
     }
 
     ameacas.append(nova_ameaca)

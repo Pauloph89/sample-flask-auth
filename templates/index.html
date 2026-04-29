@@ -2,32 +2,56 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard XEQUE-MATE</title>
+    <title>Dashboard XEQUE-MATE | CTI Agente</title>
     <style>
-        body { font-family: sans-serif; background: #1a1a1a; color: #00ff00; padding: 20px; }
-        .card { border: 1px solid #00ff00; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; color: #00ff00; margin-top: 10px; }
-        th, td { border: 1px solid #00ff00; padding: 10px; text-align: left; }
-        th { background-color: #222; }
-        input, select, button { padding: 8px; margin: 5px 0; background: #333; color: #00ff00; border: 1px solid #00ff00; }
-        button { cursor: pointer; background: #00ff00; color: #000; font-weight: bold; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; }
+        .card { border: 1px solid #30363d; padding: 20px; border-radius: 8px; margin-bottom: 25px; background: #161b22; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        
+        h1, h3, h4 { color: #58a6ff; margin-top: 0; }
+        
+        /* Tabela Estilo Hacker/Profissional */
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #0d1117; }
+        th { background-color: #21262d; color: #8b949e; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; padding: 12px; text-align: left; border-bottom: 2px solid #30363d; }
+        td { padding: 12px; border-bottom: 1px solid #30363d; font-size: 14px; }
+        tr:hover { background-color: #1c2128; }
+
+        /* Badges de Identificação */
+        .badge-mitre { background: #238636; color: white; padding: 3px 8px; border-radius: 12px; font-family: monospace; font-weight: bold; font-size: 12px; }
+        .badge-tatica { color: #58a6ff; font-style: italic; font-size: 13px; }
+        
+        /* Cores de Risco */
+        .risco-critico { color: #f85149; font-weight: bold; }
+        .risco-alto { color: #f0883e; font-weight: bold; }
+        .risco-medio { color: #d29922; }
+        .risco-baixo { color: #3fb950; }
+
+        /* Estilo dos Inputs */
+        input, select, button { padding: 10px; background: #0d1117; color: #c9d1d9; border: 1px solid #30363d; border-radius: 6px; }
+        button { background: #238636; color: white; border: none; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #2ea043; }
+
+        .stats-container { display: flex; gap: 20px; margin-bottom: 20px; }
+        .stat-box { flex: 1; padding: 15px; border-radius: 8px; border-left: 5px solid #30363d; background: #161b22; }
     </style>
 </head>
 <body>
 
-    <h1>🛡️ Monitoramento XEQUE-MATE</h1>
+    <header>
+        <h1>🛡️ XEQUE-MATE <span style="font-weight: 200; color: #8b949e;">| Agregador Inteligente</span></h1>
+        <p style="font-size: 13px; color: #8b949e;">Pesquisador: Paulo Henrique Bezerra da Silva | Projeto CTI CESAR</p>
+    </header>
 
-    <div style="display: flex; gap: 20px;">
-        <div class="card" style="flex: 1; border-color: red;">🚨 Críticos: {{ criticos }}</div>
-        <div class="card" style="flex: 1; border-color: orange;">⚠️ Altos: {{ altos }}</div>
-        <div class="card" style="flex: 1;">📊 Total: {{ total }} | <a href="/analytics" style="color: #00ff00;">Ver Analytics</a></div>
+    <div class="stats-container">
+        <div class="stat-box" style="border-left-color: #f85149;">🚨 Críticos: <strong>{{ criticos }}</strong></div>
+        <div class="stat-box" style="border-left-color: #f0883e;">⚠️ Altos: <strong>{{ altos }}</strong></div>
+        <div class="stat-box" style="border-left-color: #58a6ff;">📊 Total de Logs: <strong>{{ total }}</strong></div>
+        <div class="stat-box"><a href="/analytics" style="color: #58a6ff; text-decoration: none;">📈 Ver Analytics</a></div>
     </div>
 
-    <div class="card" style="border-color: #f1c40f;">
-        <h4 style="color: #f1c40f;">Registrar Nova Ocorrência (Campo Inteligente)</h4>
+    <div class="card">
+        <h4>Enriquecimento Semântico (Registro de Alerta)</h4>
         <form action="/add" method="POST">
-            
-            <input list="ameacas-sugeridas" name="tipo" placeholder="Tipo de Ameaça (ex: SQL Injection)" required style="width: 250px;">
+            <input list="ameacas-sugeridas" name="tipo" placeholder="Tipo de Ameaça (ex: Phishing)" required style="width: 250px;">
             <datalist id="ameacas-sugeridas">
                 {% for tipo, risco in sugestoes.items() %}
                     <option value="{{ tipo }}">Sugestão de Risco: {{ risco }}</option>
@@ -41,20 +65,21 @@
                 <option value="Crítico">Crítico</option>
             </select>
             
-            <input type="text" name="status" placeholder="Status (ex: Isolado)" required>
-            <button type="submit">Enviar Alerta</button>
+            <input type="text" name="status" placeholder="Status do Incidente" required>
+            <button type="submit">Processar e Anotar</button>
         </form>
     </div>
 
     <div class="card">
-        <h3>Logs de Segurança | Pesquisador: Paulo Henrique</h3>
-        <hr>
+        <h3>Logs de Segurança | Dataset Anotado (Fase 1)</h3>
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Data/Hora</th>
-                    <th>Tipo de Ameaça</th>
+                    <th>Ameaça</th>
+                    <th>ID MITRE</th>
+                    <th>Tática (Objetivo)</th>
                     <th>Risco</th>
                     <th>Status</th>
                 </tr>
@@ -62,14 +87,16 @@
             <tbody>
                 {% for item in lista_ameacas %}
                 <tr>
-                    <td>{{ item.id }}</td>
-                    <td>{{ item.get('data', 'N/A') }}</td>
-                    <td>{{ item.tipo }}</td>
-                    <td style="font-weight: bold; color: 
-                        {% if item.risco == 'Crítico' %} red 
-                        {% elif item.risco == 'Alto' %} orange 
-                        {% elif item.risco == 'Médio' %} yellow 
-                        {% else %} #00ff00 {% endif %};">
+                    <td>#{{ item.id }}</td>
+                    <td style="color: #8b949e; font-size: 12px;">{{ item.data }}</td>
+                    <td><strong>{{ item.tipo }}</strong></td>
+                    <td><span class="badge-mitre">{{ item.mitre_id }}</span></td>
+                    <td><span class="badge-tatica">{{ item.mitre_tatica }}</span></td>
+                    <td class="
+                        {% if item.risco == 'Crítico' %} risco-critico 
+                        {% elif item.risco == 'Alto' %} risco-alto 
+                        {% elif item.risco == 'Médio' %} risco-medio 
+                        {% else %} risco-baixo {% endif %}">
                         {{ item.risco }}
                     </td>
                     <td>{{ item.status }}</td>
@@ -78,25 +105,22 @@
             </tbody>
         </table>
     </div>
+
     <script>
-    // Transforma o dicionário do Python em um objeto JavaScript
-    const sugestoesIA = {{ sugestoes|tojson }};
+        const sugestoesIA = {{ sugestoes|tojson }};
+        const inputTipo = document.querySelector('input[name="tipo"]');
+        const selectRisco = document.querySelector('select[name="risco"]');
 
-    const inputTipo = document.querySelector('input[name="tipo"]');
-    const selectRisco = document.querySelector('select[name="risco"]');
-
-    // Escuta quando você digita ou seleciona algo
-    inputTipo.addEventListener('input', function() {
-        const valor = this.value;
-        if (sugestoesIA[valor]) {
-            // Se a IA tiver uma sugestão para esse tipo, ela muda o select!
-            selectRisco.value = sugestoesIA[valor];
-            selectRisco.style.boxShadow = "0 0 10px #f1c40f"; // Efeito visual de sugestão
-        } else {
-            selectRisco.style.boxShadow = "none";
-        }
-    });
-</script>
+        inputTipo.addEventListener('input', function() {
+            const valor = this.value;
+            if (sugestoesIA[valor]) {
+                selectRisco.value = sugestoesIA[valor];
+                selectRisco.style.borderColor = "#238636";
+            } else {
+                selectRisco.style.borderColor = "#30363d";
+            }
+        });
+    </script>
 
 </body>
 </html>
