@@ -739,5 +739,15 @@
         "status": "Bloqueado",
         "mitre_id": "T1190",
         "mitre_tatica": "Acesso Inicial"
+    },
+    {
+        "id": 106,
+        "data": "29/04/2026 15:36",
+        "tipo": "SQL Injection",
+        "risco": "Crítico",
+        "status": "Bloqueado",
+        "mitre_id": "T1190",
+        "mitre_tatica": "Acesso Inicial",
+        "recomendacao": "Isolar servidor de BD e validar filtros de entrada na aplicação."
     }
 ]
