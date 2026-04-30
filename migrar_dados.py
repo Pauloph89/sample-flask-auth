@@ -3,13 +3,17 @@ import json
 DATA_FILE = "data/threats.json"
 
 # Nossa Tabela de Conhecimento
+# No seu arquivo migrar_dados.py, o dicionário deve ficar assim:
 CONHECIMENTO_MITRE = {
     "Brute Force": {"id": "T1110", "tatica": "Acesso Inicial", "rec": "Bloquear IP de origem e forçar troca de senha do usuário."},
     "SQL Injection": {"id": "T1190", "tatica": "Acesso Inicial", "rec": "Isolar servidor de BD e validar filtros de entrada na aplicação."},
     "Phishing": {"id": "T1566", "tatica": "Acesso Inicial", "rec": "Revogar sessões ativas e alertar equipe para remover o e-mail."},
+    "DDoS": {"id": "T1498", "tatica": "Interrupção", "rec": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."},
     "DDoS Attack": {"id": "T1498", "tatica": "Interrupção", "rec": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."},
     "Port Scan": {"id": "T1595", "tatica": "Reconhecimento", "rec": "Fechar portas desnecessárias e monitorar tentativas de conexão."},
-    "Malware Inbound": {"id": "T1588", "tatica": "Obtenção de Recursos", "rec": "Isolar a máquina afetada e realizar scan completo com antivírus."}
+    "Malware Inbound": {"id": "T1588", "tatica": "Obtenção de Recursos", "rec": "Isolar a máquina afetada e realizar scan completo com antivírus."},
+    "XSS": {"id": "T1059", "tatica": "Execução", "rec": "Implementar sanitização de inputs e headers de CSP."},
+    "XSS Attack": {"id": "T1059", "tatica": "Execução", "rec": "Implementar sanitização de inputs e headers de CSP."}
 }
 
 def migrar():

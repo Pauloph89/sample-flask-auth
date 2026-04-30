@@ -5,9 +5,9 @@
         "tipo": "DDoS",
         "risco": "Baixo",
         "status": "Mitigado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 2,
@@ -45,9 +45,9 @@
         "tipo": "DDoS",
         "risco": "Alto",
         "status": "Bloqueado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 6,
@@ -75,9 +75,9 @@
         "tipo": "DDoS",
         "risco": "Médio",
         "status": "Mitigado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 9,
@@ -115,9 +115,9 @@
         "tipo": "XSS Attack",
         "risco": "Crítico",
         "status": "Bloqueado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 13,
@@ -175,9 +175,9 @@
         "tipo": "DDoS",
         "risco": "Alto",
         "status": "Isolado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 19,
@@ -205,9 +205,9 @@
         "tipo": "XSS Attack",
         "risco": "Baixo",
         "status": "Mitigado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 22,
@@ -255,9 +255,9 @@
         "tipo": "XSS Attack",
         "risco": "Alto",
         "status": "Bloqueado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 27,
@@ -265,9 +265,9 @@
         "tipo": "DDoS",
         "risco": "Baixo",
         "status": "Isolado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 28,
@@ -325,9 +325,9 @@
         "tipo": "XSS Attack",
         "risco": "Baixo",
         "status": "Isolado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 34,
@@ -335,9 +335,9 @@
         "tipo": "XSS Attack",
         "risco": "Alto",
         "status": "Monitorando",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 35,
@@ -375,9 +375,9 @@
         "tipo": "XSS Attack",
         "risco": "Baixo",
         "status": "Bloqueado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 39,
@@ -405,9 +405,9 @@
         "tipo": "XSS Attack",
         "risco": "Alto",
         "status": "Monitorando",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 42,
@@ -415,9 +415,9 @@
         "tipo": "XSS Attack",
         "risco": "Crítico",
         "status": "Isolado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 43,
@@ -425,9 +425,9 @@
         "tipo": "DDoS",
         "risco": "Baixo",
         "status": "Isolado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 44,
@@ -475,9 +475,9 @@
         "tipo": "DDoS",
         "risco": "Alto",
         "status": "Monitorando",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 49,
@@ -505,9 +505,9 @@
         "tipo": "XSS Attack",
         "risco": "Médio",
         "status": "Mitigado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 52,
@@ -515,9 +515,9 @@
         "tipo": "DDoS",
         "risco": "Crítico",
         "status": "Bloqueado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 53,
@@ -535,9 +535,9 @@
         "tipo": "DDoS",
         "risco": "Baixo",
         "status": "Isolado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 55,
@@ -545,9 +545,9 @@
         "tipo": "XSS Attack",
         "risco": "Crítico",
         "status": "Monitorando",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 56,
@@ -585,9 +585,9 @@
         "tipo": "XSS Attack",
         "risco": "Médio",
         "status": "Mitigado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 60,
@@ -635,9 +635,9 @@
         "tipo": "DDoS",
         "risco": "Crítico",
         "status": "Isolado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 65,
@@ -645,9 +645,9 @@
         "tipo": "XSS Attack",
         "risco": "Crítico",
         "status": "Bloqueado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 66,
@@ -665,9 +665,9 @@
         "tipo": "XSS Attack",
         "risco": "Médio",
         "status": "Bloqueado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 68,
@@ -675,9 +675,9 @@
         "tipo": "DDoS",
         "risco": "Médio",
         "status": "Isolado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 69,
@@ -715,9 +715,9 @@
         "tipo": "XSS Attack",
         "risco": "Crítico",
         "status": "Mitigado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 73,
@@ -735,9 +735,9 @@
         "tipo": "DDoS",
         "risco": "Médio",
         "status": "Isolado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 75,
@@ -765,9 +765,9 @@
         "tipo": "XSS Attack",
         "risco": "Alto",
         "status": "Mitigado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 78,
@@ -775,9 +775,9 @@
         "tipo": "DDoS",
         "risco": "Alto",
         "status": "Isolado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 79,
@@ -785,9 +785,9 @@
         "tipo": "XSS Attack",
         "risco": "Crítico",
         "status": "Monitorando",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 80,
@@ -845,9 +845,9 @@
         "tipo": "XSS Attack",
         "risco": "Baixo",
         "status": "Bloqueado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 86,
@@ -885,9 +885,9 @@
         "tipo": "XSS Attack",
         "risco": "Crítico",
         "status": "Mitigado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 90,
@@ -935,9 +935,9 @@
         "tipo": "XSS Attack",
         "risco": "Crítico",
         "status": "Isolado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 95,
@@ -955,9 +955,9 @@
         "tipo": "DDoS",
         "risco": "Crítico",
         "status": "Bloqueado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 97,
@@ -975,9 +975,9 @@
         "tipo": "DDoS",
         "risco": "Alto",
         "status": "Monitorando",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1498",
+        "mitre_tatica": "Interrupção",
+        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
     },
     {
         "id": 99,
@@ -985,9 +985,9 @@
         "tipo": "XSS Attack",
         "risco": "Médio",
         "status": "Mitigado",
-        "mitre_id": "N/A",
-        "mitre_tatica": "N/A",
-        "recomendacao": "Análise manual requerida."
+        "mitre_id": "T1059",
+        "mitre_tatica": "Execução",
+        "recomendacao": "Implementar sanitização de inputs e headers de CSP."
     },
     {
         "id": 100,

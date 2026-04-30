@@ -8,36 +8,16 @@ DATA_FILE = "data/threats.json"
 
 # --- CAMADA DE CONHECIMENTO (Anotação Semântica e Resposta) ---
 CONHECIMENTO_MITRE = {
-    "Brute Force": {
-        "id_tecnica": "T1110", 
-        "tatica": "Acesso Inicial",
-        "recomendacao": "Bloquear IP de origem e forçar troca de senha do usuário."
-    },
-    "SQL Injection": {
-        "id_tecnica": "T1190", 
-        "tatica": "Acesso Inicial",
-        "recomendacao": "Isolar servidor de BD e validar filtros de entrada na aplicação."
-    },
-    "Phishing": {
-        "id_tecnica": "T1566", 
-        "tatica": "Acesso Inicial",
-        "recomendacao": "Revogar sessões ativas e alertar equipe para remover o e-mail."
-    },
-    "DDoS Attack": {
-        "id_tecnica": "T1498", 
-        "tatica": "Interrupção",
-        "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."
-    },
-    "Port Scan": {
-        "id_tecnica": "T1595", 
-        "tatica": "Reconhecimento",
-        "recomendacao": "Fechar portas desnecessárias e monitorar tentativas de conexão."
-    },
-    "Malware Inbound": {
-        "id_tecnica": "T1588", 
-        "tatica": "Obtenção de Recursos",
-        "recomendacao": "Isolar a máquina afetada e realizar scan completo com antivírus."
-    }
+    "Brute Force": {"id_tecnica": "T1110", "tatica": "Acesso Inicial", "recomendacao": "Bloquear IP de origem e forçar troca de senha do usuário."},
+    "SQL Injection": {"id_tecnica": "T1190", "tatica": "Acesso Inicial", "recomendacao": "Isolar servidor de BD e validar filtros de entrada na aplicação."},
+    "Phishing": {"id_tecnica": "T1566", "tatica": "Acesso Inicial", "recomendacao": "Revogar sessões ativas e alertar equipe para remover o e-mail."},
+    "DDoS": {"id_tecnica": "T1498", "tatica": "Interrupção", "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."},
+    "DDoS Attack": {"id_tecnica": "T1498", "tatica": "Interrupção", "recomendacao": "Ativar proteção de borda (WAF) e filtrar tráfego anômalo."},
+    "Port Scan": {"id_tecnica": "T1595", "tatica": "Reconhecimento", "recomendacao": "Fechar portas desnecessárias e monitorar tentativas de conexão."},
+    "Malware Inbound": {"id_tecnica": "T1588", "tatica": "Obtenção de Recursos", "recomendacao": "Isolar a máquina afetada e realizar scan completo com antivírus."},
+    "XSS Attack": {"id_tecnica": "T1059", "tatica": "Execução", "recomendacao": "Implementar sanitização de inputs e headers de CSP."},
+    "XSS": {"id_tecnica": "T1059", "tatica": "Execução", "recomendacao": "Implementar sanitização de inputs e headers de CSP."}
+
 }
 
 @app.route("/")
