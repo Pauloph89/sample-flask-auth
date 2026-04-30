@@ -45,11 +45,17 @@
     </header>
 
     <div class="stats-container">
-        <div class="stat-box" style="border-left-color: #f85149;">🚨 Críticos: <strong>{{ criticos }}</strong></div>
-        <div class="stat-box" style="border-left-color: #f0883e;">⚠️ Altos: <strong>{{ altos }}</strong></div>
-        <div class="stat-box" style="border-left-color: #58a6ff;">📊 Total de Logs: <strong>{{ total }}</strong></div>
-        <div class="stat-box"><a href="/analytics" style="color: #58a6ff; text-decoration: none;">📈 Ver Painel Analytics</a></div>
+    <div class="stat-box" style="border-left-color: #f85149;">🚨 Críticos: <strong>{{ criticos }}</strong></div>
+    <div class="stat-box" style="border-left-color: #f0883e;">⚠️ Altos: <strong>{{ altos }}</strong></div>
+    <div class="stat-box" style="border-left-color: #58a6ff;">📊 Total: <strong>{{ total }}</strong></div>
+    
+    <!-- NOVO BOTÃO DE EXPORTAÇÃO -->
+    <div class="stat-box" style="background: #238636; border-left: none; text-align: center;">
+        <a href="/exportar" style="color: white; text-decoration: none; font-weight: bold;">📥 Exportar Dataset (CSV)</a>
     </div>
+
+    <div class="stat-box"><a href="/analytics" style="color: #58a6ff; text-decoration: none;">📈 Ver Analytics</a></div>
+</div>
 
     <div class="card">
         <h4>Novo Registro com Anotação Semântica</h4>

@@ -1,6 +1,8 @@
 import json
+import csv
+import io
 from datetime import datetime
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, make_response
 
 app = Flask(__name__)
 
@@ -109,6 +111,41 @@ def analytics():
 
     # Enviamos tanto os stats quanto as previsoes para o HTML
     return render_template("analytics.html", stats=stats_por_tipo, previsoes=previsoes)
+@app.route("/exportar")
+def exportar_csv():
+    try:
+        with open(DATA_FILE, "r", encoding="utf-8") as arquivo:
+            ameacas = json.load(arquivo)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return "Erro: Base de dados não encontrada.", 404
+
+    output = io.StringIO()
+    # Mudamos o separador para ';' que é o padrão do Excel no Brasil
+    writer = csv.writer(output, delimiter=';')
+
+    writer.writerow([
+        'ID', 'Data_Hora', 'Tipo_Ameaca', 'ID_MITRE', 
+        'Tatica_MITRE', 'Risco_Impacto', 'Status_Incidente', 'Plano_de_Resposta'
+    ])
+
+    for a in ameacas:
+        writer.writerow([
+            a.get('id'), a.get('data'), a.get('tipo'),
+            a.get('mitre_id'), a.get('mitre_tatica'),
+            a.get('risco'), a.get('status'), a.get('recomendacao')
+        ])
+
+    output.seek(0)
+    
+    # Usamos encoding 'latin-1' no retorno para garantir compatibilidade 
+    # total com versões legadas do Excel que não leem UTF-8 bem.
+    conteudo = output.getvalue().encode('latin-1', errors='replace')
+    
+    response = make_response(conteudo)
+    response.headers["Content-Disposition"] = "attachment; filename=dataset_xeque_mate_final.csv"
+    response.headers["Content-type"] = "text/csv; charset=latin-1"
+    
+    return response
 
 if __name__ == "__main__":
     app.run(debug=True)
