@@ -3,7 +3,6 @@ import json
 DATA_FILE = "data/threats.json"
 
 # Nossa Tabela de Conhecimento
-# No seu arquivo migrar_dados.py, o dicionário deve ficar assim:
 CONHECIMENTO_MITRE = {
     "Brute Force": {"id": "T1110", "tatica": "Acesso Inicial", "rec": "Bloquear IP de origem e forçar troca de senha do usuário."},
     "SQL Injection": {"id": "T1190", "tatica": "Acesso Inicial", "rec": "Isolar servidor de BD e validar filtros de entrada na aplicação."},

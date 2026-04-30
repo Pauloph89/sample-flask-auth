@@ -120,7 +120,7 @@
     </div>
 
     <script>
-        const sugestoesIA = {{ sugestoes|tojson }};
+        const sugestoesIA = JSON.parse('{{ sugestoes|tojson |safe }}');
         const inputTipo = document.querySelector('input[name="tipo"]');
         const selectRisco = document.querySelector('select[name="risco"]');
 
