@@ -2,132 +2,161 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard XEQUE-MATE | CTI Agente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XEQUE-MATE | Agregador Inteligente</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; }
-        .card { border: 1px solid #30363d; padding: 20px; border-radius: 8px; margin-bottom: 25px; background: #161b22; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        
-        h1, h3, h4 { color: #58a6ff; margin-top: 0; }
-        
-        /* Tabela Estilo SOC (Security Operations Center) */
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #0d1117; table-layout: fixed; }
-        th { background-color: #21262d; color: #8b949e; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; padding: 12px; text-align: left; border-bottom: 2px solid #30363d; }
-        td { padding: 12px; border-bottom: 1px solid #30363d; font-size: 13px; word-wrap: break-word; }
-        tr:hover { background-color: #1c2128; }
-
-        /* Badges e Identificadores Técnicos */
-        .badge-mitre { background: #238636; color: white; padding: 3px 8px; border-radius: 12px; font-family: monospace; font-weight: bold; font-size: 11px; }
-        .badge-tatica { color: #58a6ff; font-style: italic; font-size: 12px; }
-        .recomendacao-texto { color: #f1c40f; font-style: italic; line-height: 1.4; }
-        
-        /* Escala de Risco Profissional */
-        .risco-critico { color: #f85149; font-weight: bold; }
-        .risco-alto { color: #f0883e; font-weight: bold; }
-        .risco-medio { color: #d29922; }
-        .risco-baixo { color: #3fb950; }
-
-        /* Estilização de Formulário */
-        input, select, button { padding: 10px; background: #0d1117; color: #c9d1d9; border: 1px solid #30363d; border-radius: 6px; }
-        button { background: #238636; color: white; border: none; cursor: pointer; font-weight: bold; transition: 0.3s; padding: 10px 20px; }
-        button:hover { background: #2ea043; }
-
-        .stats-container { display: flex; gap: 20px; margin-bottom: 20px; }
-        .stat-box { flex: 1; padding: 15px; border-radius: 8px; border-left: 5px solid #30363d; background: #161b22; }
-        
-        header { border-bottom: 1px solid #30363d; margin-bottom: 20px; padding-bottom: 10px; }
+        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .container { margin-top: 30px; }
+        .card-custom { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .status-badge { border-radius: 20px; padding: 5px 12px; font-size: 0.85rem; font-weight: 600; }
+        .table { color: #c9d1d9; border-color: #30363d; vertical-align: middle; }
+        .table thead th { background-color: #161b22; color: #8b949e; border-bottom: 2px solid #30363d; text-transform: uppercase; font-size: 0.75rem; }
+        .stat-card { border-left: 4px solid; }
+        .stat-critico { border-left-color: #f85149; background: rgba(248, 81, 73, 0.05); }
+        .stat-alto { border-left-color: #f0883e; background: rgba(240, 136, 62, 0.05); }
+        .stat-total { border-left-color: #0071f3; background: rgba(88, 166, 255, 0.05); }
+        .btn-success { background-color: #238636; border: none; }
+        .btn-success:hover { background-color: #2ea043; }
+        .mitre-tag { color: #0077ff; font-family: monospace; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <header>
-    <h1>🛡️ XEQUE-MATE | <span style="font-weight: 300;">Agregador Inteligente</span></h1>
-    <p style="margin-top: 5px; color: #8b949e;">
-        <strong>Pesquisador:</strong> Paulo Henrique Bezerra da Silva | 
-        <strong>Orientador:</strong> Ph.D. Rafael Roque
-    </p>
-    <p style="font-size: 0.85em; color: #58a6ff;">Projeto CTI | Mestrado Profissional - CESAR School</p>
-    </header>
-
-    <div class="stats-container">
-    <div class="stat-box" style="border-left-color: #f85149;">🚨 Críticos: <strong>{{ criticos }}</strong></div>
-    <div class="stat-box" style="border-left-color: #f0883e;">⚠️ Altos: <strong>{{ altos }}</strong></div>
-    <div class="stat-box" style="border-left-color: #58a6ff;">📊 Total: <strong>{{ total }}</strong></div>
-    
-    <!-- NOVO BOTÃO DE EXPORTAÇÃO -->
-    <div class="stat-box" style="background: #238636; border-left: none; text-align: center;">
-        <a href="/exportar" style="color: white; text-decoration: none; font-weight: bold;">📥 Exportar Dataset (CSV)</a>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold">🛡️ XEQUE-MATE | <span class="text-primary" style="font-weight: 300;">Agregador Inteligente</span></h2>
+            <p class="text-secondary small">
+                <strong>Pesquisador:</strong> Paulo Henrique Bezerra da Silva | 
+                <strong>Orientador:</strong> Ph.D. Rafael Roque <br>
+                <span class="text-primary">Projeto CTI | Mestrado Profissional - CESAR School</span>
+            </p>
+        </div>
     </div>
 
-    <div class="stat-box"><a href="/analytics" style="color: #58a6ff; text-decoration: none;">📈 Ver Analytics</a></div>
-</div>
+    <!-- Dashboard de Indicadores -->
+    <div class="row text-center mb-4">
+        <div class="col-md-3">
+            <div class="card-custom stat-card stat-critico">
+                <h6 class="text-secondary">🚨 Críticos</h6>
+                <h3 class="fw-bold">{{ criticos }}</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-custom stat-card stat-alto">
+                <h6 class="text-secondary">⚠️ Altos</h6>
+                <h3 class="fw-bold">{{ altos }}</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-custom stat-card stat-total">
+                <h6 class="text-secondary">📊 Total</h6>
+                <h3 class="fw-bold">{{ total }}</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="d-grid gap-2">
+                <a href="/exportar" class="btn btn-success btn-lg py-3">📥 Exportar Dataset (CSV)</a>
+                <a href="/analytics" class="btn btn-outline-light">📈 Ver Analytics</a>
+            </div>
+        </div>
+    </div>
 
-    <div class="card">
-        <h4>Novo Registro com Anotação Semântica</h4>
-        <form action="/add" method="POST">
-            <input list="ameacas-sugeridas" name="tipo" placeholder="Tipo de Ameaça (ex: SQL Injection)" required style="width: 250px;">
-            <datalist id="ameacas-sugeridas">
-                {% for tipo, risco in sugestoes.items() %}
-                    <option value="{{ tipo }}">Risco sugerido: {{ risco }}</option>
+    <!-- Formulário de Cadastro com Heurística de Reconhecimento -->
+<div class="card-custom">
+    <h5 class="mb-3 text-primary">Novo Registro com Anotação Semântica</h5>
+    <form action="/add" method="POST" class="row g-2">
+        <div class="col-md-4">
+            <!-- 1º Quadrado: Tipo de Ameaça com Referência e Datalist -->
+            <input list="lista-sugestoes" name="tipo" id="input-tipo" 
+                   class="form-control bg-dark text-white border-secondary" 
+                   placeholder="Tipo de Ameaça (ex: SQL Injection)" required>
+            <datalist id="lista-sugestoes">
+                {% for tipo, qtd in stats.items() %}
+                    <option value="{{ tipo }}">{{ qtd }} ocorrências registradas</option>
                 {% endfor %}
             </datalist>
+        </div>
 
-            <select name="risco">
+        <div class="col-md-2">
+            <select name="risco" id="select-risco" class="form-select bg-dark text-white border-secondary" required>
+                <option value="" disabled selected>Nível de Risco</option>
                 <option value="Baixo">Baixo</option>
                 <option value="Médio">Médio</option>
                 <option value="Alto">Alto</option>
                 <option value="Crítico">Crítico</option>
             </select>
-            
-            <input type="text" name="status" placeholder="Status do Incidente" required style="width: 200px;">
-            <button type="submit">Processar e Anotar</button>
-        </form>
+        </div>
+
+        <div class="col-md-3">
+            <!-- 3º Quadrado: Status do Incidente com Referência -->
+            <input type="text" name="status" 
+                   class="form-control bg-dark text-white border-secondary" 
+                   placeholder="Status do Incidente (ex: Em análise)">
+        </div>
+
+        <div class="col-md-3 d-grid">
+            <button type="submit" class="btn btn-success">Processar e Anotar</button>
+        </div>
+    </form>
+</div>
+
+    <!-- Tabela de Logs SQL -->
+    <div class="card-custom">
+        <h5 class="mb-4">Logs de Segurança | Dataset Enriquecido (Anotação MITRE)</h5>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>DATA/HORA</th>
+                        <th>AMEAÇA</th>
+                        <th>ID MITRE</th>
+                        <th>TÁTICA</th>
+                        <th>RISCO</th>
+                        <th>RECOMENDAÇÃO DE RESPOSTA PRONTA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ameaca in lista_ameacas %}
+                    <tr>
+                        <td class="text-secondary small">#{{ ameaca.id }}</td>
+                        <td class="small">{{ ameaca.data_hora }}</td>
+                        <td class="fw-bold">{{ ameaca.tipo_ameaca }}</td>
+                        <td><span class="mitre-tag">{{ ameaca.id_mitre }}</span></td>
+                        <td class="small text-secondary">{{ ameaca.tatica_mitre }}</td>
+                        <td>
+                            <span class="status-badge 
+                                {% if ameaca.risco_impacto == 'Crítico' %} bg-danger 
+                                {% elif ameaca.risco_impacto == 'Alto' %} bg-warning text-dark
+                                {% elif ameaca.risco_impacto == 'Médio' %} bg-info text-dark
+                                {% else %} bg-secondary {% endif %}">
+                                {{ ameaca.risco_impacto }}
+                            </span>
+                        </td>
+                        <td class="small italic text-info">{{ ameaca.plano_resposta }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
+</div>
 
-    <div class="card">
-        <h3>Logs de Segurança | Dataset Enriquecido (Anotação MITRE)</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 50px;">ID</th>
-                    <th style="width: 120px;">Data/Hora</th>
-                    <th style="width: 130px;">Ameaça</th>
-                    <th style="width: 90px;">ID MITRE</th>
-                    <th style="width: 120px;">Tática</th>
-                    <th style="width: 80px;">Risco</th>
-                    <th>Recomendação de Resposta Pronta</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in lista_ameacas %}
-                <tr>
-                    <td>#{{ item.id }}</td>
-                    <td style="color: #8b949e;">{{ item.data }}</td>
-                    <td><strong>{{ item.tipo }}</strong></td>
-                    <td><span class="badge-mitre">{{ item.mitre_id }}</span></td>
-                    <td><span class="badge-tatica">{{ item.mitre_tatica }}</span></td>
-                    <td class="
-                        {% if item.risco == 'Crítico' %} risco-critico 
-                        {% elif item.risco == 'Alto' %} risco-alto 
-                        {% elif item.risco == 'Médio' %} risco-medio 
-                        {% else %} risco-baixo {% endif %}">
-                        {{ item.risco }}
-                    </td>
-                    <td class="recomendacao-texto">{{ item.recomendacao }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+<script>
+ 
+    const sugestoesIA = JSON.parse('{{ sugestoes|tojson | safe }}');
+    
+    const inputTipo = document.querySelector('input[name="tipo"]');
+    const selectRisco = document.querySelector('select[name="risco"]');
 
-    <script>
-        const sugestoesIA = JSON.parse('{{ sugestoes|tojson |safe }}');
-        const inputTipo = document.querySelector('input[name="tipo"]');
-        const selectRisco = document.querySelector('select[name="risco"]');
-
+    if (inputTipo && selectRisco) {
         inputTipo.addEventListener('input', function() {
             const valor = this.value;
             if (sugestoesIA[valor]) {
                 selectRisco.value = sugestoesIA[valor];
+                // Feedback visual de automação
                 selectRisco.style.borderColor = "#238636";
                 selectRisco.style.boxShadow = "0 0 5px rgba(35, 134, 54, 0.5)";
             } else {
@@ -135,7 +164,8 @@
                 selectRisco.style.boxShadow = "none";
             }
         });
-    </script>
+    }
+</script>
 
 </body>
 </html>

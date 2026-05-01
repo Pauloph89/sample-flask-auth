@@ -29,7 +29,7 @@ def salvar_ameaca(dados):
         dados['data'], 
         dados['tipo'], 
         dados['mitre_id'], 
-        dados['mitre_atack'], 
+        dados['mitre_atack'], # Certifique-se que esta chave vem do app.py
         dados['risco'], 
         dados['status'], 
         dados['recomendacao']
